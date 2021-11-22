@@ -14,8 +14,8 @@ async function findTaxiForRegions (name){
     return sql.rows
 
 }
-async function findTripsByRegNumber (reg,id){
-    const sql = await pool.query(`select * from trip join taxi on trip.taxi_id = trip.trip_id where taxi.regNum = $1 and taxi.taxi_id = $2  `,[reg,id])
+async function findTripsByRegNumber (reg){
+    const sql = await pool.query(`select trip_id,routes_id from taxi join trip on trip.taxi_id = taxi.taxi_id where taxi.regNum = $1`,[reg])
     return sql.rows
 
 }

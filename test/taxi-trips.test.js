@@ -36,7 +36,7 @@ describe('Taxi Trips', function () {
         const taxiTrips = TaxiTrips(pool);
 
         // assert.deepStrictEqual([{"regnum": "CF 123 546"}], await taxiTrips.findTaxiForRegions('Durban'));
-        assert.deepStrictEqual([{"regnum": "CA 245 326"}], await taxiTrips.findTaxiForRegions('Cape Town'));
+        assert.deepEqual([{"regnum": "CA 245 326"}], await taxiTrips.findTaxiForRegions('Cape Town'));
         // assert.deepStrictEqual([], taxiTrips.findTaxisForRegion('Gauteng'));
 
     })
@@ -45,7 +45,7 @@ describe('Taxi Trips', function () {
 
         const taxiTrips = TaxiTrips(pool);
         
-        assert.equal([], await taxiTrips.findTripsByRegNumber('CA 123 546',7));
+        assert.deepEqual([{"routes_id":"6","trip_id":"2"}], await taxiTrips.findTripsByRegNumber('CA 123 546'));
         // assert.deepStrictEqual([], taxiTrips.findTripsByRegNumber('***'));
 
     });
